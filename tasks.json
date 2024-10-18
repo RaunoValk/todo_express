@@ -1,14 +1,14 @@
 [
   {
     "id": 0,
-    "task": "Task 1"
+    "task": "Study HTML"
   },
   {
     "id": 1,
-    "task": "Task 2"
+    "task": "Study CSS"
   },
   {
     "id": 2,
-    "task": "Task 3"
+    "task": "Study JS"
   }
 ]
