@@ -67,6 +67,26 @@ app.post('/', (req, res) =>  {
     
     }) 
 })
+app.get ('/delete-task/:taskId', (req,res)=>{
+    let deletedTaskId = parseInt(req.params.taskId)
+    readFile('./tasks.json')
+    .then(tasks =>{
+        tasks.forEach((task, index) => {
+            if(task.id === deletedTaskId) {
+                tasks.splice(index, 1)
+            }    
+        })
+        data = JSON.stringify(tasks, null, 2)
+        fs.writeFile('./tasks.json', data, 'utf-8', err => {
+            if (err) {
+              console.error(err);
+              return;         
+             } else  {
+             res.redirect('/')
+            }
+        })
+    })
+})
 
 
 app.listen(3001, () => { 
