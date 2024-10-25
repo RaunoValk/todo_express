@@ -80,7 +80,7 @@ app.get ('/delete-task/:taskId', (req,res)=>{
             })
         })
 
-app.get ('/delete-task', (req,res)=>{
+app.get ('/delete-tasks', (req,res)=>{
             const data = JSON.stringify([])
                writeFile('./tasks.json', data)
                      res.redirect('/')
