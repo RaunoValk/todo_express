@@ -35,17 +35,26 @@ const writeFile = (filename, data) =>{
 app.get('/', (req, res) =>  {
     readFile('./tasks.json')
     .then(tasks =>{ 
-        res.render('index',{tasks: tasks})
-    
-    
-
-    
+        res.render('index',{
+            tasks: tasks, 
+            error: null
+        })
     })
 })
 app.post('/', (req, res) =>  {
     console.log("Form sent data")
     let task = req.body.task
-    
+    let error = null
+    if(task.trim().length == 0){
+        error = "Sisesta andmed"
+            readFile('./tasks.json')
+                .then(tasks =>{ 
+                    res.render('index',{
+                        tasks: tasks,  
+                        error: error
+        }) 
+    })
+} else { 
     readFile('./tasks.json')
     .then(tasks =>{ 
         let index
@@ -64,6 +73,7 @@ app.post('/', (req, res) =>  {
         writeFile('./tasks.json', data)
               res.redirect('/')
              })
+            }
          })
 app.get ('/delete-task/:taskId', (req,res)=>{
     let deletedTaskId = parseInt(req.params.taskId)
