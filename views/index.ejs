@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <title>Document</title>
+    <title>Index</title>
 </head>
 <body>
 <div class="container"> 
@@ -39,18 +39,21 @@
         <div class="card-action">
             <h3> To do </h3>
             <ul class="collection">
-              <%console.log(tasks)%>
               <% tasks.forEach(task =>{ %>
                 <li class="collection-item">
                   <%= task.task %>
-                <a 
-                href="delete-task/<%= task.id %>" 
-                class="secondary-content"> 
-                <i class=" small material-icons">delete</i>
-                </a>
+                  <a 
+                  href="/delete-task/<%= task.id %>" 
+                  class="secondary-content"> 
+                    <i class=" small material-icons">delete</i>
+                    </a>
+                  <a
+                    href="/update-task/<%= task.id %>"
+                    class="secondary-content">
+                      <i class="material-icons">edit</i> 
+                    </a>
               </li>
                 <%})%>
-
               </ul>
               <div>
                 <a href="delete-tasks" class="btn">CLEAR ALL</a>
